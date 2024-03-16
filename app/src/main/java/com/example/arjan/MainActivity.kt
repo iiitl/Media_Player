@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
+import android.os.Handler
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,8 +18,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var prev: ImageView
     private lateinit var card: ImageView
     private lateinit var songTitle: TextView
+    private lateinit var  durationTextView: TextView
+    private lateinit var currentTimeTextView: TextView
     private lateinit var next: ImageView
     private lateinit var seekbar: SeekBar
+    private lateinit var handler: Handler
     private var currentSong = mutableListOf(R.raw.arjan, R.raw.bekhayalii,R.raw.sajde,R.raw.ehsan)
     private var currentSongName =
         mutableListOf("Arjan Vailly(From Animal)", "Bekhayali(From Kabir Singh)","Sajde(From Kill-Dil)","Ehsan tera hoga (From Sanam)")
@@ -30,28 +34,31 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        handler = Handler()
         play = findViewById(R.id.playpause)
         card = findViewById(R.id.card)
+        currentTimeTextView= findViewById(R.id.currenttime)
         prev = findViewById(R.id.pre)
         next = findViewById(R.id.imageView4)
         seekbar = findViewById(R.id.progress)
         songTitle = findViewById(R.id.songTitle)
         btn_like = findViewById(R.id.btn_like)
+        durationTextView = findViewById(R.id.durationTextView)
 
         seekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 if (fromUser) {
                     mp?.seekTo(progress)
+                    updateseekbarAndTime()
                 }
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                // No implementation needed
+
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                // No implementation needed
+
             }
         })
 
@@ -67,6 +74,7 @@ class MainActivity : AppCompatActivity() {
         controlSound(currentSong[0])
         next.setOnClickListener(View.OnClickListener { next() })
         prev.setOnClickListener(View.OnClickListener { prev() })
+
     }
 
 
@@ -137,6 +145,19 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "No more songs", Toast.LENGTH_SHORT).show()
         }
 
+    }
+    private fun updateseekbarAndTime() {
+        seekbar.progress = mp!!.currentPosition
+        currentTimeTextView.text = mp?.let { millisecondsToTime(it.currentPosition) }
+        durationTextView.text = "-"+mp?.let { millisecondsToTime(it.duration-it.currentPosition) }
+
+        handler.postDelayed({ updateseekbarAndTime() }, 1000) // Update every second
+    }
+
+    private fun millisecondsToTime(milliseconds: Int): String {
+        val minutes = milliseconds / 1000 / 60
+        val seconds = milliseconds / 1000 % 60
+        return String.format("%02d:%02d", minutes, seconds)
     }
 
     fun prev() {

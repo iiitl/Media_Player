@@ -88,11 +88,11 @@
         android:paddingBottom="8dp"/>
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/currenttime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="0:01"
+        android:text="0:00"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -102,11 +102,11 @@
         />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/durationTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="-2:54"
+        android:text="-3:00"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
