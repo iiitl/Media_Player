@@ -21,7 +21,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/card"
         android:layout_width="250dp"
         android:layout_height="300dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -32,16 +32,16 @@
         app:srcCompat="@drawable/arjan" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/songTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Arjan Vailly (From Animal)"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView" />
+        app:layout_constraintTop_toBottomOf="@id/card" />
 
     <TextView
         android:id="@+id/singer"
@@ -55,7 +55,7 @@
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView" />
+        app:layout_constraintTop_toBottomOf="@id/songTitle" />
 
     <ImageView
         android:id="@+id/btn_like"
@@ -66,7 +66,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toRightOf="@id/singer"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView"
+        app:layout_constraintTop_toBottomOf="@id/songTitle"
         app:srcCompat="@drawable/heart" />
 
     <SeekBar
@@ -116,7 +116,7 @@
         />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/pre"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginLeft="50dp"
@@ -136,13 +136,13 @@
         app:srcCompat="@android:drawable/ic_media_next" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/playpause"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginTop="50dp"
-        android:src="@drawable/finalp"
+        android:src="@drawable/pause"
         app:layout_constraintEnd_toEndOf="@id/imageView4"
-        app:layout_constraintStart_toStartOf="@id/imageView3"
+        app:layout_constraintStart_toStartOf="@id/pre"
         app:layout_constraintTop_toBottomOf="@id/progress" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
