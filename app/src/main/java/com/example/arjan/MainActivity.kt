@@ -18,6 +18,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var pause : ImageView
     private lateinit var seekbar: SeekBar
     private var currentSong = mutableListOf(R.raw.arjan)
+    private var noc=0;
+    private lateinit var btn_like:ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -25,6 +27,10 @@ class MainActivity : AppCompatActivity() {
         play= findViewById(R.id.imageView5)
         pause= findViewById(R.id.imageView4)
         seekbar = findViewById(R.id.progress)
+        btn_like = findViewById(R.id.btn_like)
+        btn_like.setOnClickListener(View.OnClickListener {
+            change()
+        })
 
         controlSound(currentSong[0])
     }
@@ -62,5 +68,15 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         },1000)
+    }
+    fun change()
+    {
+        if(noc%2==0)
+        {
+            btn_like.setImageResource(R.drawable.heart)
+        }
+        else
+            btn_like.setImageResource(R.drawable.heartwhitecom)
+        noc++;
     }
 }
