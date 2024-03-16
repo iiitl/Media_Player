@@ -39,6 +39,27 @@ class MainActivity : AppCompatActivity() {
         songTitle = findViewById(R.id.songTitle)
         btn_like = findViewById(R.id.btn_like)
 
+        seekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                if (fromUser) {
+                    mp?.seekTo(progress)
+                }
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                // No implementation needed
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                // No implementation needed
+            }
+        })
+
+
+
+
+
+
         btn_like.setOnClickListener(View.OnClickListener {
             change()
         })
