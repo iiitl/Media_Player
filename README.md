@@ -1,15 +1,19 @@
 # MediaPlayer App
 
 MediaPlayer is a Kotlin app that provides an activity to play songs.
+# MORE ABOUT APP
 
-## Getting Started
+this is a simple medida player to control the video and  audio 
+YOU HAVE TO FOLLOW THESE STEPS MENTIONED BELOW
 
-Follow these instructions to clone the repository and run the app in Android Studio.
+ 
+
 
 ### Prerequisites
 
-- Android Studio installed on your computer.
-- A device or emulator with Android API level 21 or higher.
+
+Android Studio installed on your computer.
+A device or emulator with Android API level 21 or higher.
 
 ### Cloning the Repository
 
